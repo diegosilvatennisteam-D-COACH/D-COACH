@@ -1,10 +1,11 @@
 import streamlit as st
-import cv2
 import mediapipe as mp
+import cv2
 import numpy as np
-from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration
+from streamlit_webrtc import webrtc_streamer, RTCConfiguration
 
-# Forma ultra-segura de chamar o mediapipe
-mp_pose = mp.solutions.pose
-mp_drawing = mp.solutions.drawing_utils
-st.write("Aponte a câmera para o jogador para analisar a biomecânica.")
+# Chamada direta para evitar erros de versão
+BaseOptions = mp.tasks.BaseOptions
+PoseLandmarker = mp.tasks.vision.PoseLandmarker
+PoseLandmarkerOptions = mp.tasks.vision.PoseLandmarkerOptions
+VisionRunningMode = mp.tasks.vision.RunningMode
